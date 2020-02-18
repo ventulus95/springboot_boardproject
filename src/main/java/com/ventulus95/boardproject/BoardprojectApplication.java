@@ -35,8 +35,8 @@ public class BoardprojectApplication {
                     .subtitle("순서"+index)
                     .content("콘텐츠")
                     .boardType(BoardType.free)
-                    .createdTime(LocalDateTime.now())
-                    .updateTime(LocalDateTime.now())
+                    .createdDate(LocalDateTime.now())
+                    .updatedDate(LocalDateTime.now())
                     .user(user).build()));
         };
     }
