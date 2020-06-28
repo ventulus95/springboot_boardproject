@@ -5,12 +5,16 @@ import com.ventulus95.boardproject.domain.User;
 import com.ventulus95.boardproject.domain.enums.BoardType;
 import com.ventulus95.boardproject.repository.BoardRepository;
 import com.ventulus95.boardproject.repository.UserRepository;
+import com.ventulus95.boardproject.resolver.UserArgumentResolver;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.stream.IntStream;
 
 @SpringBootApplication
@@ -19,6 +23,13 @@ public class BoardprojectApplication {
     public static void main(String[] args) {
         SpringApplication.run(BoardprojectApplication.class, args);
     }
+
+    @Autowired
+    private UserArgumentResolver userArgumentResolver;
+
+   public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolverList){
+       argumentResolverList.add(userArgumentResolver);
+   }
 
     @Bean
     public CommandLineRunner runner(UserRepository userRepository, BoardRepository boardRepository)throws Exception{
