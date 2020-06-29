@@ -44,6 +44,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                     .antMatchers("/", "/login/**","/css/**", "/images/**", "/js/**", "/console/**").permitAll()
+                    .antMatchers("/facebook").hasAnyAuthority(FACEBOOK.getRoleType())
+                    .antMatchers("/google").hasAnyAuthority(GOOGLE.getRoleType())
+                    .antMatchers("/kakao").hasAnyAuthority(KAKAO.getRoleType())
                     .anyRequest().authenticated()
                 .and()
                     .headers().frameOptions().disable()
