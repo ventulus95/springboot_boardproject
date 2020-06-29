@@ -1,5 +1,6 @@
 package com.ventulus95.boardproject.controller;
 
+import com.ventulus95.boardproject.annotation.SocialUser;
 import com.ventulus95.boardproject.domain.User;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.stereotype.Controller;

@@ -32,23 +32,25 @@ public class BoardprojectApplication {
    }
 
     @Bean
-    public CommandLineRunner runner(UserRepository userRepository, BoardRepository boardRepository)throws Exception{
-        return  (args) -> {
+    public CommandLineRunner runner(UserRepository userRepository, BoardRepository boardRepository) {
+        return (args) -> {
             User user = userRepository.save(User.builder()
-                    .name("chang")
+                    .name("havi")
                     .password("test")
-                    .email("chang@gamil.com")
+                    .email("havi@gmail.com")
                     .createdTime(LocalDateTime.now())
                     .build());
+
             IntStream.rangeClosed(1, 200).forEach(index ->
                     boardRepository.save(Board.builder()
-                    .title("게시글 "+index)
-                    .subtitle("순서"+index)
-                    .content("콘텐츠")
-                    .boardType(BoardType.free)
-                    .createdDate(LocalDateTime.now())
-                    .updatedDate(LocalDateTime.now())
-                    .user(user).build()));
+                            .title("게시글"+index)
+                            .subtitle("순서"+index)
+                            .content("컨텐츠")
+                            .boardType(BoardType.free)
+                            .createdDate(LocalDateTime.now())
+                            .updatedDate(LocalDateTime.now())
+                            .user(user).build())
+            );
         };
     }
 
